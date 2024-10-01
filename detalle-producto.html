@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0; /* Eliminar márgenes predeterminados */
+        }
+        .header {
+            display: flex;
+            justify-content: space-between; /* Separar el inicio y el resto */
+            align-items: center;
+            background-color: #fff;
+            padding: 50px 15px; /* Espaciado ajustado */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .header-left {
+            display: flex; /* Flexbox para alinear elementos a la izquierda */
+            align-items: center;
+        }
+        .header-right {
+            display: flex; /* Flexbox para alinear elementos a la derecha */
+            align-items: center;
+        }
+        .header a {
+            text-decoration: none;
+            color: #333;
+            padding: 40px 40px; /* Espaciado reducido */
+            font-size: 14px; /* Tamaño de fuente más pequeño */
+            margin: 0 30px; /* Espacio entre enlaces */
+        }
+        .detalle-producto {
+            display: flex;
+            justify-content: flex-start; /* Alinear al inicio */
+            align-items: flex-start; /* Alinear al inicio */
+            width: 80%;
+            margin: 40px auto;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        .detalle-img {
+            max-width: 200px; /* Tamaño máximo de la imagen */
+            max-height: 200px; /* Tamaño máximo de la imagen */
+            object-fit: cover; /* Mantiene la proporción y evita deformaciones */
+            margin-right: 10px; /* Espacio reducido a la derecha */
+            border-radius: 5px;
+        }
+        .info-producto {
+            max-width: 300px; /* Tamaño máximo de la información del producto */
+        }
+        .tipo-molido, .peso {
+            margin: 10px 0;
+        }
+        button {
+            background-color: #c2a477; /* Color de fondo de los botones */
+            color: white;
+            border: none;
+            padding: 8px 10px; /* Espaciado reducido */
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 12px; /* Tamaño de fuente más pequeño */
+        }
+        button:hover {
+            background-color: #b89c6f; /* Color al pasar el mouse */
+        }
+        .agregar-carrito {
+            background-color: #2c2c2c; /* Color del botón "Agregar al carrito" */
+            margin-top: 10px;
+            width: 100%;
+        }
+        .agregar-carrito:hover {
+            background-color: #1f1f1f; /* Color al pasar el mouse */
+        }
+        .boton-productos {
+            background-color: #c2a477;
+            color: white;
+            padding: 8px 20px; /* Espaciado reducido */
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+            font-size: 12px; /* Tamaño de fuente más pequeño */
+        }
+        .boton-productos:hover {
+            background-color: #b89c6f;
+        }
+        .texto-Inicio {
+            color: #333; /* Texto negro */
+            font-size: 14px; /* Tamaño de fuente más pequeño */
+            cursor: pointer; /* Cambiar cursor al pasar sobre el texto */
+            margin: 0; /* Sin márgenes */
+            padding: 0; /* Sin padding */
+        }
+        .texto-Inicio:hover {
+            text-decoration: underline; /* Subrayar al pasar el mouse */
+        }
+        .descripcion {
+            margin-top: 10px; /* Espaciado ajustado */
+            line-height: 1.4; /* Mejorar la legibilidad */
+        }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <div class="header-left">
+        <a href="cafeteria.html" class="texto-Inicio">Inicio</a>
+    </div>
+    <div class="header-right">
+        <a href="#"><img src="buscar.png" alt="Buscar" style="width: 12px; vertical-align: middle;">Buscar</a>
+        <a href="#"><img src="cuenta.png" alt="Mi Cuenta" style="width: 12px; vertical-align: middle;">Mi cuenta</a>
+        <a href="#"><img src="pedido.png" alt="Su pedido" style="width: 12px; vertical-align: middle;">Su pedido</a>
+    </div>
+</header>
+
+<main class="detalle-producto">
+    <img src="producto.jpg" alt="Nombre del Producto" class="detalle-img">
+    <div class="info-producto">
+        <h2 id="nombre-producto">Nombre del Producto</h2>
+        <p><strong>Precio:</strong> <span id="precio-producto">$0 MXN</span></p>
+        <p>Cantidad: <input type="number" id="cantidad" value="1" min="1"></p>
+        <button class="agregar-carrito">Agregar al Carrito</button>
+        <p class="descripcion" id="descripcion-producto">Descripción completa del producto.</p>
+        <a href="productos.html" class="boton-productos">Regresar a Productos</a>
+    </div>
+</main>
+
+<footer>
+    <!-- Aquí puedes incluir el pie de página común -->
+</footer>
+
+<script>
+// Aquí puedes agregar un script para cargar el producto según el ID
+const params = new URLSearchParams(window.location.search);
+const id = params.get('id');
+
+// Ejemplo de cómo podrías cargar los datos del producto
+const productos = {
+    1: { nombre: "Café Natural", precio: "$30 MXN", img: "cafe1.jpeg", descripcion: "Delicioso café natural." },
+    2: { nombre: "Té de Helado de Pera", precio: "$25 MXN", img: "bebida.jpeg", descripcion: "Refrescante té de helado de pera." },
+    3: { nombre: "Picaditas(sopes)", precio: "$35 MXN", img: "picaditas.jpeg", descripcion: "Deliciosos sopes." },
+    4: { nombre: "Tortas(cecinas,quesillo y milanesa)", precio: "$45 MXN", img: "tortas.jpeg", descripcion: "Tortas con cecina y quesillo." },
+    5: { nombre: "gelatina de bugambilia con jamaica", precio: "$25 MXN", img: "gelatina1.jpeg", descripcion: "Gelatina fresca y deliciosa." },
+    6: { nombre: "helado de fruta", precio: "$30 MXN", img: "helado.jpeg", descripcion: "Helado de frutas naturales." },
+    7: { nombre: "manzanas locas", precio: "$45 MXN", img: "manzana.jpeg", descripcion: "Deliciosas manzanas locas." },
+    // Agrega los demás productos aquí
+};
+
+if (id && productos[id]) {
+    const producto = productos[id];
+    document.getElementById('nombre-producto').innerText = producto.nombre;
+    document.getElementById('precio-producto').innerText = producto.precio;
+    document.getElementById('descripcion-producto').innerText = producto.descripcion;
+    document.querySelector('.detalle-img').src = producto.img;
+}
+</script>
+
+</body>
+</html>

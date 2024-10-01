@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Cafetería La Nube Mixteca</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #333;
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 20px;
+        }
+        .producto {
+            background-color: #444;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            width: 300px;
+            text-align: center;
+        }
+        .producto img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .producto-titulo {
+            color: #FFFFFF; /* Asegurado que el color sea blanco */
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        .producto-descripcion {
+            color: #FFFFFF; /* Asegurado que el color sea blanco */
+            font-size: 16px;
+        }
+        .producto-precio {
+            color: #FFFFFF; /* Asegurado que el color sea blanco */
+            font-size: 18px;
+            margin-top: 10px;
+        }
+        .menu {
+            padding: 20px;
+        }
+        .menu-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .item {
+            background-color: #444;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px;
+            width: 250px;
+            text-align: center;
+        }
+        .item img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .item h4, .item p, .item .price {
+            color: #FFFFFF; /* Asegurado que el color sea blanco */
+        }
+        footer {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .boton-productos {
+            color: white;
+            background-color: #555;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <section class="menu">  
+        <h2>PRODUCTOS</h2>  
+        <p>Deliciosas opciones basadas en café y platillos típicos, con toques contemporáneos y tradicionales.</p>  
+        
+        <!-- Sección de Bebidas -->  
+        <h3>BEBIDAS</h3>  
+        <div class="menu-items">  
+            <div class="item">  
+                <img src="cafe1.jpeg" alt="Café Natural">  
+                <h4><a href="detalle-producto.html?id=1" style="color: white;">Café Natural</a></h4>  
+                <p>Delicioso café con aroma y sabor únicos, disfruta de la auténtica mezcla mexicana.</p>  
+                <span class="price">$30 MXN</span>  
+            </div>  
+            <div class="item">  
+                <img src="bebida.jpeg" alt="Té de Helado de Pera">  
+                <h4><a href="detalle-producto.html?id=2" style="color: white;">Té de Helado de Pera</a></h4>  
+                <p>Refrescante té helado con el dulce sabor de la pera, una experiencia única.</p>  
+                <span class="price">$25 MXN</span>  
+            </div>  
+        </div>  
+        
+        <!-- Sección de Comida -->  
+        <h3>COMIDA</h3>  
+        <div class="menu-items">  
+            <div class="item">  
+                <img src="picaditas.jpeg" alt="Picaditas(sopes)">  
+                <h4><a href="detalle-producto.html?id=3" style="color: white;">Picaditas(sopes)</a></h4>  
+                <p>Estas delicias son pequeñas tortillas de maíz, elaboradas a mano y cocidas al comal, que se transforman en un lienzo perfecto para una explosión de sabores.</p>  
+                <span class="price">$35 MXN</span>  
+            </div>  
+            <div class="item">  
+                <img src="tortas.jpeg" alt="Tortas(cecinas,quesillo y milanesa)">  
+                <h4><a href="detalle-producto.html?id=4" style="color: white;">Tortas(cecinas,quesillo y milanesa)</a></h4>  
+                <p>Disfruta de nuestras tortas irresistibles perfectas entre dos panes tiernos. Ideal para cualquier comida, estas tortas son el abrazo que tu apetito estaba buscando.</p>  
+                <span class="price">$45 MXN</span>  
+            </div>  
+        </div>  
+
+        <!-- Nueva sección de Postres -->  
+        <h3>POSTRES</h3>  
+        <div class="menu-items">  
+            <div class="item">  
+                <img src="gelatina1.jpeg" alt="gelatina de bugambilia con jamaica">  
+                <h4><a href="detalle-producto.html?id=5" style="color: white;">gelatina de bugambilia con jamaica</a></h4>  
+                <p>Este postre vibrante combina el delicado sabor floral de la bugambilia con el toque ácido y refrescante de la Jamaica, creando una experiencia única y colorida en cada cucharada.</p>  
+                <span class="price">$25 MXN</span>  
+            </div>  
+            <div class="item">  
+                <img src="helado.jpeg" alt="helado de fruta">  
+                <h4><a href="detalle-producto.html?id=6" style="color: white;">helado de fruta</a></h4>  
+                <p>Elaborados con frutas frescas y jugosas, cada bocado es un estallido de sabor que revive la esencia de la naturaleza.</p>  
+                <span class="price">$30 MXN</span>  
+            </div>  
+            <div class="item">  
+                <img src="manzana.jpeg" alt="manzanas locas">  
+                <h4><a href="detalle-producto.html?id=7" style="color: white;">manzanas locas</a></h4>  
+                <p>Cada bocado es una combinación perfecta de dulzura, acidez y picante, creando una experiencia divertida y refrescante.</p>  
+                <span class="price">$45 MXN</span>  
+            </div>  
+        </div>  
+    </section>
+
+    <footer>
+        <a href="cafeteria.html" class="boton-productos">Regresar a la Página Principal</a>
+    </footer>
+</body>
+</html>
