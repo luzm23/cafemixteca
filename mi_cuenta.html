@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Cuenta - Contacto</title>
+    <style>
+        body {
+            font-family: 'Trebuchet MS', sans-serif;
+            background-color: #f8f1e4;
+            margin: 0;
+            padding: 20px;
+            color: #5a4635;
+        }
+        .container {
+            max-width: 700px;
+            margin: 40px auto;
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+        }
+        h2, h3 {
+            color: #3e2723;
+            text-align: center;
+        }
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .form-group {
+            flex: 1;
+            margin-right: 15px;
+        }
+        .form-group:last-child {
+            margin-right: 0;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+        input[type="text"], input[type="email"], input[type="tel"], textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #bda27e;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+        button {
+            width: 100%;
+            padding: 12px;
+            background-color: #8b4513;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #a0522d;
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .contact-info p {
+            color: #3e2723;
+            margin: 5px 0;
+        }
+        /* Espaciado adicional entre los campos de nombre y correo */
+        .form-row .form-group {
+            margin-right: 30px; /* Espaciado más amplio */
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Contacto</h2>
+    
+    <form id="contact-form">
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Nombre completo:</label>
+                <input type="text" id="name" name="name" maxlength="20" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" maxlength="10" required>
+            </div>
+        </div>
+
+        <label for="phone">Número de teléfono:</label>
+        <input type="tel" id="phone" name="phone" maxlength="10" required>
+
+        <label for="message">Mensaje:</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Enviar mensaje</button>
+    </form>
+
+    <!-- Sección de información de contacto -->
+    <div class="contact-info">
+        <h3>¡Contáctanos!</h3>
+        <p>Whatsapp: 8113962848</p>
+        <p>Teléfono: 81 8317 3260</p>
+        <p>Mail: cafeterialanubemixteca@gmail.com</p>
+    </div>
+</div>
+
+<script>
+document.getElementById('contact-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evita el envío del formulario
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const phone = document.getElementById('phone').value;
+    const message = document.getElementById('message').value;
+
+    // Validación del nombre: Solo letras y máximo 20 caracteres
+    const nameRegex = /^[A-Za-z\s]{1,20}$/;
+    if (!nameRegex.test(name)) {
+        alert('El nombre solo debe contener letras y tener un máximo de 20 caracteres.');
+        return;
+    }
+
+    // Validación del correo: Permite hasta 10 caracteres (como indicaste)
+    if (email.length > 10) {
+        alert('El correo electrónico no puede exceder los 10 caracteres.');
+        return;
+    }
+
+    // Validación del teléfono: Solo números y máximo 10 dígitos
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(phone)) {
+        alert('El número de teléfono debe contener exactamente 10 dígitos numéricos.');
+        return;
+    }
+
+    if (name && email && phone && message) {
+        alert(`Gracias ${name}, tu mensaje ha sido enviado correctamente.`);
+        document.getElementById('contact-form').reset(); // Reinicia el formulario después de enviar
+
+        // Redirige a la página de detalles del producto (asegúrate que el nombre de la página sea correcto)
+        window.location.href = "productos.html"; // Cambiar si no deseas redirigir
+    } else {
+        alert('Por favor, completa todos los campos antes de enviar el formulario.');
+    }
+});
+</script>
+
+</body>
+</html>

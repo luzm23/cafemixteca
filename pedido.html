@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tu Pedido - Cafetería La Nube Mixteca</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .carrito-container {
+            max-width: 800px;
+            margin: 50px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        .producto-carrito {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .producto-img {
+            max-width: 100px;
+            height: auto;
+            border-radius: 5px;
+        }
+        .info-producto-carrito {
+            flex-grow: 1;
+            margin-left: 20px;
+        }
+        .total {
+            font-weight: bold;
+            text-align: right;
+            margin-top: 20px;
+        }
+        .boton-eliminar {
+            background-color: #c2a477;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .boton-eliminar:hover {
+            background-color: #b89c6f;
+        }
+        .boton-regresar {
+            background-color: #c2a477;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 20px;
+        }
+        .boton-regresar:hover {
+            background-color: #b89c6f;
+        }
+    </style>
+</head>
+<body>
+
+<div class="carrito-container">
+    <button class="boton-regresar" onclick="regresar()">Regresar a Productos</button>
+    <h2>Tu Pedido</h2>
+    <div id="lista-productos"></div>
+    <p class="total">Total: <span id="total-pedido">$0 MXN</span></p>
+    <button onclick="finalizarPedido()">Finalizar Pedido</button>
+</div>
+
+<script>
+    function cargarCarrito() {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        let listaProductos = document.getElementById('lista-productos');
+        let total = 0;
+
+        listaProductos.innerHTML = '';  // Limpiar la lista antes de cargar
+
+        carrito.forEach((producto, index) => {
+            let subtotal = parseFloat(producto.precio.replace('$', '').replace(' MXN', '')) * producto.cantidad;
+            total += subtotal;
+
+            let itemCarrito = `
+                <div class="producto-carrito">
+                    <img src="${producto.img}" alt="${producto.nombre}" class="producto-img">
+                    <div class="info-producto-carrito">
+                        <h4>${producto.nombre}</h4>
+                        <p><strong>Precio:</strong> ${producto.precio}</p>
+                        <p><strong>Cantidad:</strong> ${producto.cantidad}</p>
+                    </div>
+                    <p><strong>Subtotal:</strong> $${subtotal.toFixed(2)} MXN</p>
+                    <button class="boton-eliminar" onclick="eliminarProducto(${index})">Eliminar</button>
+                </div>
+            `;
+
+            listaProductos.innerHTML += itemCarrito;
+        });
+
+        document.getElementById('total-pedido').innerText = `$${total.toFixed(2)} MXN`;
+    }
+
+    function eliminarProducto(index) {
+        let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
+        carrito.splice(index, 1);  // Eliminar el producto del carrito
+        localStorage.setItem('carrito', JSON.stringify(carrito));  // Actualizar el carrito en localStorage
+        cargarCarrito();  // Recargar el carrito
+    }
+
+    function finalizarPedido() {
+        alert("Gracias por tu compra. Total a pagar: " + document.getElementById('total-pedido').innerText);
+        localStorage.removeItem('carrito');  // Vaciar carrito después de finalizar
+        window.location.href = 'index.html';  // Redirigir a la página principal
+    }
+
+    function regresar() {
+        window.location.href = 'productos.html';  // Redirigir a la página de productos
+    }
+
+    cargarCarrito();
+</script>
+
+</body>
+</html>
